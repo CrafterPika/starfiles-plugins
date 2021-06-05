@@ -14,18 +14,34 @@ window['start_' + meta.id] = function(){
     if (window.location.href == "https://starfiles.co/settings" || window.location.href == "https://starfiles.ml/settings") {
         var htmltext = `<button class="btn btn-small" id="pluginSettings">Plugin Settings</button>
         <br>
-        <div id="pluginManagerSettings">
-            <p>Test To proof it worked</p>
-        </div>`;
+        <br>
+        <div id="pluginManagerSettings" style="display:none;">
+            <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
+        </div>
+        <br>
+        <br>
+        <br>`;
         var x = document.getElementsByClassName('pagecard object'); 
         x[0].innerHTML = htmltext + x[0].innerHTML;
 
+        // Settings Page
         document.getElementById("pluginSettings").addEventListener("click", function(){
             var x = document.getElementById("pluginManagerSettings");
             if (x.style.display === "none") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
+            }
+        });
+
+        // RM All Plugins
+        document.getElementById("removeAllPlugins").addEventListener("click", function(){
+            if (confirm('Are you sure to continue, this will disable all plugins you installed')) { 
+                // DO IT!
+                localStorage.removeItem("plugins");
+                alert("Removed all Plugins")
+            } else {
+                alert('cancelled action')
             }
         });
     } else {
