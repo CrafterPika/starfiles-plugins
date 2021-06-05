@@ -3,7 +3,7 @@ const meta = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
-    version: '0.0.3b1',
+    version: '0.0.3b4',
     link: 'https://github.com/CrafterPika/starfiles-plugins',
     compatibility:{
         website: true
@@ -12,16 +12,38 @@ const meta = {
 // Declare Plugin
 window['start_' + meta.id] = function(){
     if (window.location.href == "https://starfiles.co/settings" || window.location.href == "https://starfiles.ml/settings") {
-        var htmltext = `<button class="btn btn-small" id="pluginSettings">Plugin Settings</button>
+        // get Plugins Info
+        var localstorplugins = localStorage.getItem('plugins');
+        var pluginmeta = JSON.parse(localstorplugins);
+
+        var htmltext = `<button class="btn btn-small" id="pluginSettings">Plugin Manager Settings</button>
         <br>
         <br>
         <div id="pluginManagerSettings" style="display:none;">
             <p>Plugin Options:</p>
             <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
-        </div>
-        <br>`;
+            <br>
+            <br>
+            <p>Installed Plugins</p>
+            <div id="installedPluginList">
+            </div>
+
+            <!-- Space Unde this text -->
+            <br>
+            <br>
+        </div>`;
         var x = document.getElementsByClassName('pagecard object'); 
         x[0].innerHTML = htmltext + x[0].innerHTML;
+
+        pluginmeta.forEach(plugin => {
+            var gh_url = "https://github.com/" + plugin.repo;
+            var plugin_nm = plugin.plugin_name;
+            var plugin_ver = plugin.version;
+
+            var x = document.getElementById('installedPluginList')
+            var htmltext =  `<p>Source: <a href="${gh_url}" target="_blank">Github Repo</a> | Name: ${plugin_nm} | Version: ${plugin_ver}`
+            x.innerHTML = htmltext + x.innerHTML;
+        })
 
         // Settings Page
         document.getElementById("pluginSettings").addEventListener("click", function(){
