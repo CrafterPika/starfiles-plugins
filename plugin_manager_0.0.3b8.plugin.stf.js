@@ -3,7 +3,7 @@ const meta = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
-    version: '0.0.3b7',
+    version: '0.0.3b8',
     link: 'https://github.com/CrafterPika/starfiles-plugins',
     compatibility:{
         website: true
@@ -15,7 +15,7 @@ window['start_' + meta.id] = function(){
         // Inject Script
         var script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://cdn.jsdelivr.net/gh/CrafterPika/starfiles-plugins@latest/_res/plg_mgr.js';
+        script.src = 'https://cdn.jsdelivr.net/gh/CrafterPika/starfiles-plugins@latest/_res/plg_mgr2.js';
         document.head.appendChild(script);
 
         // get Plugins Info
@@ -66,7 +66,7 @@ window['start_' + meta.id] = function(){
             console.log(index_nm)
 
             var x = document.getElementById('installedPluginList')
-            var htmltext =  `<p>Source: <a href="${gh_url}" target="_blank">Github Repo</a> | Name: ${plugin_nm} | Version: ${plugin_ver} | <button class="btn btn-small" id="rmPluginBtn" onclick="rmPluginID(${index_nm});">Uninstall</button>`
+            var htmltext =  `<p>Source: <a href="${gh_url}" target="_blank">Github Repo</a> | Name: ${plugin_nm} | Version: ${plugin_ver} | <button class="btn btn-small" onclick="rmPluginID('${plugin_nm}');">Uninstall</button>`
             x.innerHTML = htmltext + x.innerHTML;
         })
 
