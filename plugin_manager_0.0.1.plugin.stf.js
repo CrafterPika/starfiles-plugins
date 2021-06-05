@@ -11,19 +11,23 @@ const meta = {
 }
 // Declare Plugin
 window['start_' + meta.id] = function(){
-    var htmltext = '<button class="btn btn-small" id="removePlugins">Remove All Plugins</button><br><br>';
-    var x = document.getElementsByClassName('pagecard object'); 
-    x[0].innerHTML = htmltext + x[0].innerHTML;
+    if (window.location.href == "https://starfiles.co/settings" || window.location.href == "https://starfiles.ml/settings") {
+        var htmltext = '<button class="btn btn-small" id="removePlugins">Remove All Plugins</button><br><br>';
+        var x = document.getElementsByClassName('pagecard object'); 
+        x[0].innerHTML = htmltext + x[0].innerHTML;
     
-    document.getElementById("removePlugins").addEventListener("click", function(){
-        if (confirm('Are you sure to continue, this will disable all plugins you installed')) { 
-            // DO IT!
-            localStorage.removeItem("plugins");
-            alert("Removed all Plugins")
-        } else {
-            alert('cancelled action')
-        }
-    });
+        document.getElementById("removePlugins").addEventListener("click", function(){
+            if (confirm('Are you sure to continue, this will disable all plugins you installed')) { 
+                // DO IT!
+                localStorage.removeItem("plugins");
+                alert("Removed all Plugins")
+            } else {
+                alert('cancelled action')
+            }
+        });
+    } else {
+        // Nothing
+    }
 }
 // Run Plugin
 init_plugin(meta);
