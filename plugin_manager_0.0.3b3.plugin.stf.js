@@ -16,10 +16,9 @@ window['start_' + meta.id] = function(){
         <br>
         <br>
         <div id="pluginManagerSettings" style="display:none;">
+            <p>Plugin Options:</p>
             <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
         </div>
-        <br>
-        <br>
         <br>`;
         var x = document.getElementsByClassName('pagecard object'); 
         x[0].innerHTML = htmltext + x[0].innerHTML;
