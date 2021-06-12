@@ -61,7 +61,7 @@ window['start_' + meta.id] = function(){
         pluginmeta.forEach(function(currentValue, index) {
             var gh_url = "https://github.com/" + currentValue.repo;
             var plugin_nm = currentValue.plugin_name;
-            var plugin_ver = currentValue.version;
+            var plugin_ver = currentValue.expected_version;
             var index_nm = index;
             console.log(index_nm)
 
