@@ -1,5 +1,5 @@
 // Metadata
-const meta = {
+const meta_plugin_manager = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
@@ -10,7 +10,7 @@ const meta = {
     }
 }
 // Declare Plugin
-window['start_' + meta.id] = function(){
+window['start_' + meta_plugin_manager.id] = function(){
     if (window.location.href == "https://starfiles.co/settings" || window.location.href == "https://starfiles.ml/settings") {
         // Inject Script
         var script = document.createElement('script');
@@ -39,9 +39,8 @@ window['start_' + meta.id] = function(){
         //var header = document.getElementsByTagName('head')[0];
         // header.innerHTML = script + header.innerHTML;
 
-        var htmltext = `<h4>Plugin Manager</h4>
+        var htmltext = `<h4>Installed Plugins</h4>
         <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
-        <p>Installed Plugins</p>
         <div id="installedPluginList"></div>`;
         document.getElementById('advanced').querySelector('h3').insertAdjacentHTML('afterend', htmltext);
 
@@ -72,4 +71,4 @@ window['start_' + meta.id] = function(){
     }
 }
 // Run Plugin
-init_plugin(meta);
+init_plugin(meta_plugin_manager);
