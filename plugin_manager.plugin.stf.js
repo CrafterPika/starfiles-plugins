@@ -3,7 +3,7 @@ const meta = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
-    version: '0.0.4',
+    version: '0.1',
     link: 'https://github.com/CrafterPika/starfiles-plugins',
     compatibility:{
         website: true
@@ -39,24 +39,11 @@ window['start_' + meta.id] = function(){
         //var header = document.getElementsByTagName('head')[0];
         // header.innerHTML = script + header.innerHTML;
 
-        var htmltext = `<button class="btn btn-small" id="pluginSettings">Plugin Manager Settings</button>
-        <br>
-        <br>
-        <div id="pluginManagerSettings" style="display:none;">
-            <p>Plugin Options:</p>
-            <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
-            <br>
-            <br>
-            <p>Installed Plugins</p>
-            <div id="installedPluginList">
-            </div>
-
-            <!-- Space Unde this text -->
-            <br>
-            <br>
-        </div>`;
-        var x = document.getElementsByClassName('pagecard object'); 
-        x[0].innerHTML = htmltext + x[0].innerHTML;
+        var htmltext = `<h4>Plugin Manager</h4>
+        <button class="btn btn-small" id="removeAllPlugins">Remove All Plugins</button>
+        <p>Installed Plugins</p>
+        <div id="installedPluginList"></div>`;
+        document.getElementById('advanced').querySelector('h3').insertAdjacentHTML('afterend', htmltext);
 
         pluginmeta.forEach(function(currentValue, index) {
             var gh_url = "https://github.com/" + currentValue.repo;
@@ -69,16 +56,6 @@ window['start_' + meta.id] = function(){
             var htmltext =  `<p>Source: <a href="${gh_url}" target="_blank">Github Repo</a> | Name: ${plugin_nm} | Version: ${plugin_ver} | <button class="btn btn-small" onclick="rmPluginID('${plugin_nm}');">Uninstall</button>`
             x.innerHTML = htmltext + x.innerHTML;
         })
-
-        // Settings Page
-        document.getElementById("pluginSettings").addEventListener("click", function(){
-            var x = document.getElementById("pluginManagerSettings");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        });
 
         // RM All Plugins
         document.getElementById("removeAllPlugins").addEventListener("click", function(){
