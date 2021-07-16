@@ -1,5 +1,5 @@
 // Metadata
-const meta_plugin_manager = {
+let meta_plugin_manager = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
