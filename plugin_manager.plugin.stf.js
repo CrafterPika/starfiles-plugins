@@ -3,7 +3,7 @@ let meta_plugin_manager = {
     id: 'ml.crafterpika.pluginmanager69', // ID's should be a unique string
     name: 'PluginManager',
     author: 'CrafterPika',
-    version: '0.1',
+    version: '0.1.1',
     link: 'https://github.com/CrafterPika/starfiles-plugins',
     compatibility:{
         website: true
